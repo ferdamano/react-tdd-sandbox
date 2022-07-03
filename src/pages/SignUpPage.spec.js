@@ -5,4 +5,5 @@ it("has header", () => {
     render(<SignUpPage />);
     const header = screen.queryByRole("heading", { name: "Sign Up"});
     expect(header).toBeInTheDocument();
+    expect(header).toHaveClass("hello-world");
 })
