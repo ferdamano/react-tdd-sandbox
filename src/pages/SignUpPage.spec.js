@@ -24,6 +24,18 @@ describe('Sign Up Page', () => {
             expect(input).toBeInTheDocument();
             expect(input.type).toBe("password");
         });
+        it('has password repeat input', () => {
+            render(<SignUpPage />);
+            const input = screen.getByLabelText("Password Repeat");
+            expect(input).toBeInTheDocument();
+            expect(input.type).toBe("password");
+        });
+        it('should have Sign Up button and initially disabled', () => {
+            render(<SignUpPage />);
+            const button = screen.queryByRole('button', {name: 'Sign Up', type: 'submit'});
+            expect(button).toBeInTheDocument();
+            expect(button).toBeDisabled();
+        });
     });
 });
 

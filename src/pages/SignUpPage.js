@@ -11,6 +11,9 @@ class SignUpPage extends Component {
                 <input placeholder="email" type="text" />
                 <label>Password</label>
                 <input placeholder="password" type="password"/>
+                <label htmlFor="inputRepeat">Password Repeat</label>
+                <input id="inputRepeat" type="password"/>
+                <button disabled type="submit">Sign Up</button>
             </div>
         );
     }
