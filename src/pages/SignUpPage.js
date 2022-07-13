@@ -1,6 +1,5 @@
 import { Component } from "react";
-
-
+import axios from "axios";
 
 class SignUpPage extends Component {
     state = {
@@ -8,7 +7,8 @@ class SignUpPage extends Component {
         username: '',
         email: '',
         password: '',
-        value: ''
+        value: '',
+        loading: false
     };
 
     onChangeRepeat = (e) => {
@@ -28,7 +28,8 @@ class SignUpPage extends Component {
             email,
             password
         }
-        // axios.post("http://localhost:8080/api/1.0/users", body);
+        this.setState({loading: true});
+        // axios.post("/api/1.0/users", body);
         fetch("/api/1.0/users", {
             method: 'POST',
             headers: {
@@ -42,7 +43,7 @@ class SignUpPage extends Component {
         return(
             <div>
                 <form onSubmit={this.submit}>
-                    <h1 className="hello-world">Sign Up</h1>;
+                    <h1 className="hello-world">Sign Up</h1>
                     <label htmlFor="inputUsername">Username</label>
                     <input id="inputUsername" onChange={this.onChangeField} placeholder="username" type="text" name="username" />
                     <label htmlFor="inputEmail">E-mail</label>
@@ -51,7 +52,7 @@ class SignUpPage extends Component {
                     <input id="inputPassword" type="password" name="password" onChange={this.onChangeField}/>
                     <label htmlFor="repeatInputPassword">Password Repeat</label>
                     <input id="repeatInputPassword" type="password" onChange={this.onChangeRepeat}/>
-                    <button onClick={this.submit} disabled={this.state.disabled} type="submit">Sign Up</button>
+                    <button onClick={this.submit} disabled={ this.state.disabled || this.state.loading } type="submit">Sign Up</button>
                 </form>
             </div>
         );
