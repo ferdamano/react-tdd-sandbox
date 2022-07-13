@@ -1,5 +1,6 @@
 import { Component } from "react";
-import axios from 'axios';
+
+
 
 class SignUpPage extends Component {
     state = {
@@ -27,7 +28,14 @@ class SignUpPage extends Component {
             email,
             password
         }
-        axios.post("http://localhost:8080/api/1.0/users", body);
+        // axios.post("http://localhost:8080/api/1.0/users", body);
+        fetch("/api/1.0/users", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(body)
+        })
     }
 
     render(){
