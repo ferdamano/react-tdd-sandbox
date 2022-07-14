@@ -52,7 +52,9 @@ class SignUpPage extends Component {
                     <input id="inputPassword" type="password" name="password" onChange={this.onChangeField}/>
                     <label htmlFor="repeatInputPassword">Password Repeat</label>
                     <input id="repeatInputPassword" type="password" onChange={this.onChangeRepeat}/>
-                    <button onClick={this.submit} disabled={ this.state.disabled || this.state.loading } type="submit">Sign Up</button>
+                    <button onClick={this.submit} disabled={ this.state.disabled || this.state.loading } type="submit">
+                        {(this.state.loading) ? (<i className="fa-solid fa-spinner fa-spin"></i>) : "Sign Up"}
+                    </button>
                 </form>
             </div>
         );
